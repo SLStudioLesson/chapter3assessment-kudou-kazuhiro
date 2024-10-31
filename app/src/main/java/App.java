@@ -15,6 +15,28 @@ public class App {
             System.out.print("Select (1/2): ");
             String choice = reader.readLine();
             
+            // 1か2が選択された場合
+            switch (choice) {
+                case "1":
+                    CSVDataHandler csvDataHandler = new CSVDataHandler();
+                    new RecipeUI(csvDataHandler).displayMenu();
+                    break;
+
+                case "2":
+                    JSONDataHandler jsonDataHandler = new JSONDataHandler();
+                    new RecipeUI(jsonDataHandler).displayMenu();
+                    
+                    break;
+            
+                default:
+                    break;
+            }
+
+            // 1、2以外が選択された場合
+            if (!choice.equals("1") && !choice.equals("2")) {
+                CSVDataHandler csvDataHandler = new CSVDataHandler();
+                new RecipeUI(csvDataHandler).displayMenu();
+            }
 
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
